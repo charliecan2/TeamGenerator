@@ -12,6 +12,11 @@ const render = require("./lib/htmlRenderer");
 
 const teamMembers = [];
 
+// Make a function that initializes inquirer.prompt to ask what kind of teammate is being added, if at all
+function askAway (){
+
+}
+
 function manager (){
     inquirer.prompt([
         {
@@ -35,8 +40,9 @@ function manager (){
             name: "officeNumber"
         },
     ]).then(response => {
-        const manager = new Manager(response.managerName, response.managerID, )
-        teamMembers.push();
+        const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.officeNumber)
+        teamMembers.push(manager);
+        console.log(teamMembers);
     })
 }
 function engineer (){
@@ -64,6 +70,7 @@ function engineer (){
     ]).then(response => {
         const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.github)
         teamMembers.push(engineer);
+        console.log(teamMembers);
     })
 }
 function intern (){
@@ -91,9 +98,13 @@ function intern (){
     ]).then(response => {
         const intern = new Intern(response.internName, response.internID, response.internEmail, response.school)
         teamMembers.push(intern);
+        console.log(teamMembers);
     })
 }
 
+manager();
+engineer();
+intern();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
