@@ -31,7 +31,7 @@ function askAway (){
             intern();
         }
         else if (response.member == "None") {
-            console.log("Goodbye.");
+            renderHTML();
         }
     })
 }
@@ -61,7 +61,6 @@ function manager(){
     ]).then(response => {
         const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.officeNumber)
         teamMembers.push(manager);
-        console.log(teamMembers);
         askAway();
     })
 }
@@ -90,7 +89,6 @@ function engineer (){
     ]).then(response => {
         const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.github)
         teamMembers.push(engineer);
-        console.log(teamMembers);
         askAway();
     })
 }
@@ -117,10 +115,16 @@ function intern (){
             name: "school"
         },
     ]).then(response => {
-        const intern = new Intern(response.internName, response.internID, response.internEmail, response.school)
+        const intern = new Intern(response.internName, response.internID, response.internEmail, response.school);
         teamMembers.push(intern);
-        console.log(teamMembers);
         askAway();
+    })
+}
+
+function renderHTML (){
+    fs.writeFile(outputPath, render(teamMembers), err => {
+        if (err) throw err;
+        console.log("You're team page has successfully been generated!");
     })
 }
 

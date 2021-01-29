@@ -1,0 +1,20 @@
+#teamHeader{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.container {
+    justify-content: center;
+}
+.card {
+    margin: 25px;
+    float: left;
+}
+.card-body {
+    background-color:rgb(230, 224, 224);
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+.card-header {
+    background-color: rgb(60, 104, 235);
+    color: white;
+}
