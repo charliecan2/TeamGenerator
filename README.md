@@ -14,7 +14,7 @@ The user will need to install Node.js from the nodejs.org website. Also, if pack
 ## Usage
 To use this generator, the user should open up the terminal and input "node app.js" onto the command line to receive a series of questions. They will be asked to choose what kind of team member they'd like to add onto their page, either a Manager, Engineer, or Intern. Once they're done adding team members, the HTML file will be rendered and be ready to be viewed.
 ## Video Demonstration:
-https://youtu.be/BfT41j5hKVk
+https://youtu.be/TqW34DfPQVA
 ## License
 *   This application is covered by the [MIT](https://opensource.org/licenses/MIT/) license.
 ## Contributors
