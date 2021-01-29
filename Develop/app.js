@@ -12,12 +12,31 @@ const render = require("./lib/htmlRenderer");
 
 const teamMembers = [];
 
-// Make a function that initializes inquirer.prompt to ask what kind of teammate is being added, if at all
 function askAway (){
-
+    inquirer.prompt([
+        {
+            type: "checkbox",
+            message: "What kind of teammember will you be adding? Please select only one.",
+            choices: ["Manager", "Engineer", "Intern", "None"],
+            name: "member"
+        }
+    ]).then(response => {
+        if (response.member == "Manager") {
+            manager();
+        }
+        else if (response.member == "Engineer") {
+            engineer();
+        }
+        else if (response.member == "Intern") {
+            intern();
+        }
+        else if (response.member == "None") {
+            console.log("Goodbye.");
+        }
+    })
 }
 
-function manager (){
+function manager(){
     inquirer.prompt([
         {
             type: "input",
@@ -43,6 +62,7 @@ function manager (){
         const manager = new Manager(response.managerName, response.managerID, response.managerEmail, response.officeNumber)
         teamMembers.push(manager);
         console.log(teamMembers);
+        askAway();
     })
 }
 function engineer (){
@@ -71,6 +91,7 @@ function engineer (){
         const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.github)
         teamMembers.push(engineer);
         console.log(teamMembers);
+        askAway();
     })
 }
 function intern (){
@@ -99,12 +120,11 @@ function intern (){
         const intern = new Intern(response.internName, response.internID, response.internEmail, response.school)
         teamMembers.push(intern);
         console.log(teamMembers);
+        askAway();
     })
 }
 
-manager();
-engineer();
-intern();
+askAway();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
